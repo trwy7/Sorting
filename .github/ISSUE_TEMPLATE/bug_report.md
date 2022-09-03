@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: Send a bug report
-title: ""
-labels: ["Bug"]
-assignees: "trey7658"
+title: ''
+labels: ''
+assignees: trey7658
 
 ---
 
@@ -12,4 +12,3 @@ assignees: "trey7658"
 
 **Screenshots**
 <!-- If you can, add screenshots to help explain your problem. -->
-

@@ -1,9 +1,9 @@
 ---
 name: New file type
 about: Suggust a new file type
-title: ""
-labels: ["New file type"]
-assignees: "trey7658"
+title: ''
+labels: New file type
+assignees: trey7658
 
 ---
 

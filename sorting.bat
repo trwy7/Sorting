@@ -41,7 +41,7 @@ if %cho%==2 goto startsort
 if %cho%==3 goto open
 if %cho%==4 goto Custom
 if %cho%==5 start https://docs.google.com/forms/d/e/1FAIpQLSeDDv3icxblmAuFTGyq1MAOR8_L6lxtBTPHJB_cWXxuuxIYBw/viewform?usp=sf_link
-if %cho%==5 start explorer.exe "C:\treyapps\Sort"
+if %cho%==6 goto uninstall
 exit
 :startsort
 cls

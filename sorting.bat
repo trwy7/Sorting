@@ -32,16 +32,12 @@ echo please choose an number
 echo 1) cancel
 echo 2) Sort now
 echo 3) open sorting folder for later
-echo 4) Custom sorting folder (make sure to use quotes)
-echo 5) Request new file type
-echo 6) uninstall
+echo 4) More options
 set/p "cho=>"
 if %cho%==1 goto exit
 if %cho%==2 goto startsort
 if %cho%==3 goto open
-if %cho%==4 goto Custom
-if %cho%==5 start https://docs.google.com/forms/d/e/1FAIpQLSeDDv3icxblmAuFTGyq1MAOR8_L6lxtBTPHJB_cWXxuuxIYBw/viewform?usp=sf_link
-if %cho%==6 goto uninstall
+if %cho%==4 goto menu
 exit
 :startsort
 cls

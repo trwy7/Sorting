@@ -39,6 +39,28 @@ if %cho%==2 goto startsort
 if %cho%==3 goto open
 if %cho%==4 goto menu
 exit
+:menu
+cls
+echo please choose an number
+echo 1) Feedback
+echo 2) uninstall
+echo 3) Back
+set/p "cho=>"
+if %cho%==1 goto forms
+if %cho%==2 goto uninstall
+if %cho%==3 goto sort
+exit
+:forms
+cls
+echo please choose an number
+echo 1) google forms
+echo 2) github
+echo 3) Back
+set/p "cho=>"
+if %cho%==1 start https://docs.google.com/forms/d/e/1FAIpQLSeDDv3icxblmAuFTGyq1MAOR8_L6lxtBTPHJB_cWXxuuxIYBw/viewform?usp=sf_link
+if %cho%==2 start https://github.com/trey7658/Sorting/issues/new/choose
+if %cho%==3 goto menu
+exit
 :startsort
 cls
 echo the ending files will go to

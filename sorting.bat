@@ -134,6 +134,6 @@ start explorer.exe %desktop%
 pause
 exit
 :uninstall
-echo sorry to se you go!
+echo sorry to see you go!
 timeout 4 > NUL
 "C:\treyapps\Sort\uninstall.bat"

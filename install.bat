@@ -24,6 +24,7 @@ del %appdata%\treyapps\sort\Icon.ico
 md %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\"
 copy "Sort your files.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 copy "SORTYO~1.LNK" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
+copy "UNINST~1.BAT" %appdata%\treyapps\sort\uninstall.bat
 cls
 echo please choose an number
 echo 1) Exit

@@ -1,10 +1,10 @@
 @echo off
 title A simple sorting app
-set loc="C:\treyapps\Sort\sorting"
+set loc=%appdata%\treyapps\sort\sorting
 set desktop=%userprofile%\Documents\sorting
 :start
 color 0f 
-echo welcome to a sorting app that trey made
+echo welcome to a sorting app
 goto sort
 :crash
 cls
@@ -16,7 +16,7 @@ echo you can close the app now or press a key to try again
 pause
 goto sort
 :open
-start %SystemRoot%\explorer.exe "C:\treyapps\Sort\sorting"
+start %SystemRoot%\explorer.exe %appdata%\treyapps\sort\sorting
 exit
 :Custom
 color fc
@@ -35,7 +35,7 @@ echo 3) open sorting folder for later
 echo 4) More options
 set/p "cho=>"
 if %cho%==1 goto exit
-if %cho%==2 goto startsort
+if %cho%==2 goto sort1
 if %cho%==3 goto open
 if %cho%==4 goto menu
 exit
@@ -61,23 +61,17 @@ if %cho%==1 start https://docs.google.com/forms/d/e/1FAIpQLSeDDv3icxblmAuFTGyq1M
 if %cho%==2 start https://github.com/trey7658/Sorting/issues/new/choose
 if %cho%==3 goto menu
 exit
-:startsort
+:sort1
 cls
 echo the ending files will go to
 echo %desktop%
-color fc
-echo if the app shows errors it is fine
-title confirm sort
 pause
 title sorting
 cls
+echo sorting to
+echo %desktop%
 color 0f
-:: icon isnt working for first install hovever i found a better solution
-::md %desktop%
-::copy icon.txt %desktop%
-::rename %desktop%\icon.txt desktop.ini
-::attrib %desktop%\desktop.ini +s +h +r
-::del icon.txt
+:sort2
 md %desktop%\images
 md %desktop%\apps
 md %desktop%\music
@@ -86,7 +80,6 @@ md %desktop%\videos
 md %desktop%\installers
 cd %loc%
 ::images
-cls
 title sorting photos
 echo sorting photos
 move *.jpg* %desktop%\images
@@ -95,11 +88,11 @@ move *.jfif* %desktop%\images
 move *.gif* %desktop%\images
 move *.png* %desktop%\images
 move *.jpg* %desktop%\images
-timeout 1
 ::apps
-cls
 title sorting apps
 echo sorting apps
+move *setup* %desktop%\installers
+move *installer* %desktop%\installers
 move *.bat* %desktop%\apps
 move *.cmd* %desktop%\apps
 move *.py* %desktop%\apps
@@ -107,51 +100,41 @@ move *.exe* %desktop%\apps
 move *.com* %desktop%\apps
 move *.scr* %desktop%\screensavers
 move *.msi* %desktop%\installers
-timeout 1
+move *.msix* %desktop%\installers
 ::music
 title sorting music
-cls
 echo sorting music
 move *.mp3* %desktop%\music
 move *.m4a* %desktop%\music
 move *.wav* %desktop%\music
-timeout 1
 ::videos
-cls
 title sorting videos
 echo sorting videos
 move *.mp4* %desktop%\videos
-timeout 1
 ::work
-cls
 title sorting work
 echo sorting work
 move *.pptx* %desktop%\work\presentations
 move *.docx* %desktop%\work\Documents
 move *.xlsx* %desktop%\work\spreadsheets
-timeout 1
 title finishing up
-cls
 ECHO [.ShellClassInfo] >%desktop%\desktop.ini
 ECHO IconResource=C:\treyapps\Sort\Icon.ico,0 >>%desktop%\desktop.ini
 move %desktop%\desktop.in %desktop%\desktop.ini
 attrib +S +H %desktop%\desktop.ini
 attrib +R %desktop%
-timeout 1
 del %desktop%\readme.txt
-timeout 1
 echo This folder has your sortable files >%desktop%\readme.txt
-echo Thanks for using treys file sorter >>%desktop%\readme.txt
 color fc
 title sorting complete
+cls
 echo Everything that is a sortable file type
 echo has been put in your documents
 echo This folder has your sortable files >%desktop%\readme.txt
-echo Thanks for using treys file sorter >>%desktop%\readme.txt
-start explorer.exe %desktop%
 pause
+start explorer.exe %desktop%
 exit
 :uninstall
 echo sorry to see you go!
-timeout 4 > NUL
-"C:\treyapps\Sort\uninstall.bat"
+timeout 2 > NUL
+%appdata%\treyapps\sort\uninstall.bat

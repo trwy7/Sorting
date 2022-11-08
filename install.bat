@@ -19,8 +19,14 @@ md %appdata%\treyapps\sort\sorting
 copy *.* %appdata%\treyapps\sort\
 copy "opensort.bat" C:\treyapps\sort
 copy "Icon.ico" C:\treyapps\sort
+copy "IconBlackAndWhite.ico" C:\treyapps\sort
+copy "IconBlue.ico" C:\treyapps\sort
+copy "IconPurple.ico" C:\treyapps\sort
 del %appdata%\treyapps\sort\opensort.bat
 del %appdata%\treyapps\sort\Icon.ico
+del %appdata%\treyapps\sort\IconBlackAndWhite.ico
+del %appdata%\treyapps\sort\IconBlue.ico
+del %appdata%\treyapps\sort\IconPurple.ico
 md %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\"
 copy "Sort your files.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 copy "SORTYO~1.LNK" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"

@@ -44,12 +44,27 @@ cls
 echo please choose an number
 echo 1) Feedback
 echo 2) uninstall
-echo 3) Back
+echo 3) change icon
+echo 4) Back
 set/p "cho=>"
 if %cho%==1 goto forms
 if %cho%==2 goto uninstall
-if %cho%==3 goto sort
+if %cho%==3 goto iconchange
+if %cho%==4 goto sort
 exit
+:iconchange
+cd /d C:\treyapps\sort\shortcuts
+echo please choose an icon
+echo 1) Default (blue and green)
+echo 2) Blue (just shades of blue)
+echo 3) Purple (purple and pink)
+echo 4) greyscale (black and white)
+set/p "icon=>"
+if %icon%==1 copy "greenblue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
+if %icon%==2 copy "blue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
+if %icon%==3 copy "purple.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
+if %icon%==4 copy "greyscale.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
+goto sort
 :forms
 cls
 echo please choose an number

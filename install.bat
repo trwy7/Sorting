@@ -51,7 +51,7 @@ copy "blue.lnk" C:\treyapps\sort\shortcuts
 copy "purple.lnk" C:\treyapps\sort\shortcuts
 copy "greyscale.lnk" C:\treyapps\sort\shortcuts
 cls
-echo please choose an number
+echo Done installing
 echo 1) Exit
 echo 2) Sort now
 set/p "cho=>"

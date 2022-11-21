@@ -17,7 +17,6 @@ FOR /F "usebackq delims=" %%a in (`"findstr /n ^^ TOS.txt"`) do (
     ENDLOCAL
 )
 del TOS.txt
-explorer.exe %loc%
 pause > NUL
 :ask
 cls
@@ -35,7 +34,7 @@ echo you must accept the TOS to continue
 pause > NUL
 exit
 :startdownload
-curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/IconPurple.ico2
+curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/IconPurple.ico
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/uninstall.bat
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/purple.lnk
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/greyscale.lnk

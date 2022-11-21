@@ -2,7 +2,7 @@
 name: Bug report
 about: Send a bug report
 title: ''
-labels: ''
+labels: 'bug'
 assignees: trey7658
 
 ---

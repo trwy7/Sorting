@@ -86,13 +86,41 @@ cls
 echo sorting to
 echo %desktop%
 color 0f
+
+
 :sort2
-md %desktop%\images
-md %desktop%\apps
-md %desktop%\music
-md %desktop%\screensavers
-md %desktop%\videos
-md %desktop%\installers
+if EXIST "%desktop%\images" (
+echo Images already exist!, Skipping!
+) else (
+    md %desktop%\images
+)
+if EXIST "%desktop%\apps" (
+echo Apps already exist!, Skipping! 
+) else (
+    md %desktop%\apps
+)
+if EXIST "%desktop%\music" (
+echo Music already exist!, Skipping! 
+) else (
+    md %desktop%\music
+)
+if EXIST "%desktop%\screensavers" (
+echo Screensavers already exist!, Skipping! 
+) else (
+    md %desktop%\screensavers
+)
+if EXIST "%desktop%\videos" (
+echo Videos already exist! 
+) else (
+    md %desktop%\videos
+)
+if EXIST "%desktop%\installers" (
+echo Installers already exist!, Skipping!
+) else (
+    md %desktop%\installers
+)
+
+
 cd %loc%
 ::images
 title sorting photos
@@ -142,6 +170,7 @@ del %desktop%\readme.txt
 echo This folder has your sortable files >%desktop%\readme.txt
 color fc
 title sorting complete
+pause
 cls
 echo Everything that is a sortable file type
 echo has been put in your documents

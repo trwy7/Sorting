@@ -83,16 +83,38 @@ echo %desktop%
 pause
 title sorting
 cls
-echo sorting to
-echo %desktop%
-color 0f
 :sort2
-md %desktop%\images
-md %desktop%\apps
-md %desktop%\music
-md %desktop%\screensavers
-md %desktop%\videos
-md %desktop%\installers
+echo creating folders
+if EXIST "%desktop%\images" (
+echo Images already exist, Skipping!
+) else (
+    md %desktop%\images
+)
+if EXIST "%desktop%\apps" (
+echo Apps already exist, Skipping!
+) else (
+    md %desktop%\apps
+)
+if EXIST "%desktop%\music" (
+echo Music already exist, Skipping!
+) else (
+    md %desktop%\music
+)
+if EXIST "%desktop%\screensavers" (
+echo Screensavers already exist, Skipping!
+) else (
+    md %desktop%\screensavers
+)
+if EXIST "%desktop%\videos" (
+echo Videos already exist, Skipping!
+) else (
+    md %desktop%\videos
+)
+if EXIST "%desktop%\installers" (
+echo Installers already exist, Skipping!
+) else (
+    md %desktop%\installers
+)
 cd %loc%
 ::images
 title sorting photos
@@ -132,6 +154,7 @@ echo sorting work
 move *.pptx* %desktop%\work\presentations
 move *.docx* %desktop%\work\Documents
 move *.xlsx* %desktop%\work\spreadsheets
+cls
 title finishing up
 ECHO [.ShellClassInfo] >%desktop%\desktop.ini
 ECHO IconResource=C:\treyapps\Sort\Icon.ico,0 >>%desktop%\desktop.ini

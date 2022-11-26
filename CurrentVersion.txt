@@ -1,0 +1,2 @@
+Most recent stable version: 1.1.0
+Most recent beta: 1.1.0

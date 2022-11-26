@@ -2,40 +2,7 @@
 title A simple sorting app
 set loc=%appdata%\treyapps\sort\sorting
 set desktop=%userprofile%\Documents\sorting
-set currentver=3
-echo Checking for updates
-set num=%random%
-set temploc=%temp%\%num%
-md %temploc%
-cd /d %temploc%
-cls
-if %errorlevel%==0 (
-    For /F %%G In ('curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/CurrentStableVersion.txt') Do Set "newest=%%G"
-    if "%newest%" GTR "%currentver%" goto ask4update
-    if "%newest%"=="%currentver%" echo you are up to date
-    if "%newest%" LSS "%currentver%" echo You are currently running a beta version
-    timeout 1 > NUL
-    goto start
-) else (
-    echo error (this is usually from no connection or github is blocked on your network)
-    echo.
-    echo Error code: %errorlevel%
-    timeout 1 > NUL
-    goto start
-)
-:ask4update
-echo you are running an outdated version
-echo.
-pause
-cls
-echo please select an option
-echo 1) dont update
-echo 2) update
-set/p "cho=>"
-if %cho%==1 goto start
-if %cho%==2 goto update
-:update
-
+set currentver=1.1.0
 :start
 color 0f 
 echo welcome to a sorting app
@@ -75,20 +42,46 @@ if %cho%==4 goto menu
 if %cho%==69420 echo entering debug mode
 if %cho%==69420 echo i am not responsible for what happens here
 if %cho%==69420 cmd.exe
-exit
+goto sort
 :menu
 cls
 echo please choose an number
 echo 1) Feedback
 echo 2) uninstall
 echo 3) change icon
-echo 4) Back
+echo 4) check for updates
+echo 5) Back
 set/p "cho=>"
 if %cho%==1 goto forms
 if %cho%==2 goto uninstall
 if %cho%==3 goto iconchange
-if %cho%==4 goto sort
-exit
+if %cho%==4 goto update
+if %cho%==5 goto sort
+goto menu
+:update
+set num=%random%
+set temploc=%temp%\%num%
+md %temploc%
+cd /d %temploc%
+curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/CurrentVersion.txt
+cls
+SETLOCAL DisableDelayedExpansion
+FOR /F "usebackq delims=" %%a in (`"findstr /n ^^ CurrentVersion.txt"`) do (
+    set "var=%%a"
+    SETLOCAL EnableDelayedExpansion
+    set "var=!var:*:=!"
+    echo(!var!
+    ENDLOCAL
+)
+echo Your current version: %currentver%
+echo.
+echo please choose an option
+echo 1) install latest beta
+echo 2) cancel
+set/p "cho=>"
+if %cho%==1 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/onlineinstaller.bat
+if %cho%==1 onlineinstaller.bat
+if %cho%==2 goto sort
 :iconchange
 cd /d C:\treyapps\sort\shortcuts
 echo please choose an icon

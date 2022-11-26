@@ -156,6 +156,7 @@ move *.docx* %desktop%\work\Documents
 move *.xlsx* %desktop%\work\spreadsheets
 cls
 title finishing up
+del %desktop%\desktop.ini
 ECHO [.ShellClassInfo] >%desktop%\desktop.ini
 ECHO IconResource=C:\treyapps\Sort\Icon.ico,0 >>%desktop%\desktop.ini
 move %desktop%\desktop.in %desktop%\desktop.ini

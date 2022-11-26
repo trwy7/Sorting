@@ -2,6 +2,40 @@
 title A simple sorting app
 set loc=%appdata%\treyapps\sort\sorting
 set desktop=%userprofile%\Documents\sorting
+set currentver=3
+echo Checking for updates
+set num=%random%
+set temploc=%temp%\%num%
+md %temploc%
+cd /d %temploc%
+cls
+if %errorlevel%==0 (
+    For /F %%G In ('curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/CurrentStableVersion.txt') Do Set "newest=%%G"
+    if "%newest%" GTR "%currentver%" goto ask4update
+    if "%newest%"=="%currentver%" echo you are up to date
+    if "%newest%" LSS "%currentver%" echo You are currently running a beta version
+    timeout 1 > NUL
+    goto start
+) else (
+    echo error (this is usually from no connection or github is blocked on your network)
+    echo.
+    echo Error code: %errorlevel%
+    timeout 1 > NUL
+    goto start
+)
+:ask4update
+echo you are running an outdated version
+echo.
+pause
+cls
+echo please select an option
+echo 1) dont update
+echo 2) update
+set/p "cho=>"
+if %cho%==1 goto start
+if %cho%==2 goto update
+:update
+
 :start
 color 0f 
 echo welcome to a sorting app
@@ -38,6 +72,9 @@ if %cho%==1 goto exit
 if %cho%==2 goto sort1
 if %cho%==3 goto open
 if %cho%==4 goto menu
+if %cho%==69420 echo entering debug mode
+if %cho%==69420 echo i am not responsible for what happens here
+if %cho%==69420 cmd.exe
 exit
 :menu
 cls

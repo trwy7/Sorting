@@ -1,4 +1,6 @@
 @echo off
+:: skip TOS (it was removed)
+goto startdownload
 echo Downloading TOS
 timeout 1 > nul
 set num=%random%
@@ -34,7 +36,14 @@ echo you must accept the TOS to continue
 pause > NUL
 exit
 :startdownload
+echo downloading required files
+timeout 1 > NUL
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/IconPurple.ico
+if %errorlevel%==9009 echo curl is required but not installed. (for some reason)
+if %errorlevel%==9009 echo.
+if %errorlevel%==9009 echo you can install with the manual installer found at the github repository
+if %errorlevel%==9009 pause
+if %errorlevel%==9009 start https://github.com/trey7658/Sorting/wiki/Install#manual-install
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/uninstall.bat
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/purple.lnk
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/greyscale.lnk
@@ -54,11 +63,13 @@ echo 1) Default (blue and green)
 echo 2) Blue (just shades of blue)
 echo 3) Purple (purple and pink)
 echo 4) greyscale (black and white)
+echo 5) cancel install
 set/p "icon=>"
 if %icon%==1 goto install
 if %icon%==2 goto install
 if %icon%==3 goto install
 if %icon%==4 goto install 
+if %icon%==5 goto canceling
 goto iconselector
 :install
 md C:\treyapps\sort\icons
@@ -92,3 +103,12 @@ echo 2) Sort now
 set/p "cho=>"
 if %cho%==1 exit
 if %cho%==2 %appdata%\treyapps\sort\sorting.bat
+exit
+:canceling
+echo cleaning up (deleting temporary files)
+del /Q *.*
+cls
+echo Done cleaning
+echo.
+echo Press any key to exit
+pause

@@ -39,23 +39,179 @@ exit
 echo downloading required files
 timeout 1 > NUL
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/IconPurple.ico
-if %errorlevel%==9009 echo curl is required but not installed. (for some reason)
+if %errorlevel%==9009 echo curl is required but not installed for some reason
 if %errorlevel%==9009 echo.
 if %errorlevel%==9009 echo you can install with the manual installer found at the github repository
 if %errorlevel%==9009 pause
 if %errorlevel%==9009 start https://github.com/trey7658/Sorting/wiki/Install#manual-install
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Error, usually caused by no network connection or github is blocked on your network
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/uninstall.bat
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/purple.lnk
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/greyscale.lnk
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/greenblue.lnk
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/blue.lnk
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/sorting.bat
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/opensort.bat
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/install.bat
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/icon.txt
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/IconBlue.ico
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/IconBlackAndWhite.ico
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/Icon.ico
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. Please try again later
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    exit
+)
 :iconselector
 cls
 echo please choose an icon
@@ -63,13 +219,11 @@ echo 1) Default (blue and green)
 echo 2) Blue (just shades of blue)
 echo 3) Purple (purple and pink)
 echo 4) greyscale (black and white)
-echo 5) cancel install
 set/p "icon=>"
 if %icon%==1 goto install
 if %icon%==2 goto install
 if %icon%==3 goto install
 if %icon%==4 goto install 
-if %icon%==5 goto canceling
 goto iconselector
 :install
 md C:\treyapps\sort\icons
@@ -104,11 +258,3 @@ set/p "cho=>"
 if %cho%==1 exit
 if %cho%==2 %appdata%\treyapps\sort\sorting.bat
 exit
-:canceling
-echo cleaning up (deleting temporary files)
-del /Q *.*
-cls
-echo Done cleaning
-echo.
-echo Press any key to exit
-pause

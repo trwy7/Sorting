@@ -3,12 +3,12 @@ timeout 1 > nul
 set num=%random%
 set loc=%temp%\%num%
 md %loc%
+cd /d %loc%
 :: skip TOS (it was removed)
 goto startdownload
 curl -o %loc%\TOS.txt https://raw.githubusercontent.com/trey7658/Sorting/main/TOS.txt
 cls
 @echo off
-cd /d %loc%
 SETLOCAL DisableDelayedExpansion
 FOR /F "usebackq delims=" %%a in (`"findstr /n ^^ TOS.txt"`) do (
     set "var=%%a"

@@ -1,11 +1,10 @@
 @echo off
-:: skip TOS (it was removed)
-goto startdownload
-echo Downloading TOS
 timeout 1 > nul
 set num=%random%
 set loc=%temp%\%num%
 md %loc%
+:: skip TOS (it was removed)
+goto startdownload
 curl -o %loc%\TOS.txt https://raw.githubusercontent.com/trey7658/Sorting/main/TOS.txt
 cls
 @echo off

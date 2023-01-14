@@ -5,7 +5,7 @@ set desktop=%userprofile%\Documents\sorting
 set currentver=1.2.0-beta-r1
 set ver=0010200
 set theValue=
-for /f "delims=" %%a in ('curl https://raw.githubusercontent.com/trey7658/Sorting/main/debug/currentStableVersion') do @set theValue=%%a
+for /f "delims=" %%a in ('curl -S -s https://raw.githubusercontent.com/trey7658/Sorting/main/debug/currentStableVersion') do @set theValue=%%a
 if %ver% GTR %theValue% echo you are running a beta version
 if %ver% LSS %theValue% goto askforautoupdate
 if %ver% == %theValue% echo you are up to date

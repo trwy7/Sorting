@@ -1,15 +1,14 @@
 @echo off
-:: skip TOS (it was removed)
-goto startdownload
-echo Downloading TOS
 timeout 1 > nul
 set num=%random%
 set loc=%temp%\%num%
 md %loc%
+cd /d %loc%
+:: skip TOS (it was removed)
+goto startdownload
 curl -o %loc%\TOS.txt https://raw.githubusercontent.com/trey7658/Sorting/main/TOS.txt
 cls
 @echo off
-cd /d %loc%
 SETLOCAL DisableDelayedExpansion
 FOR /F "usebackq delims=" %%a in (`"findstr /n ^^ TOS.txt"`) do (
     set "var=%%a"
@@ -122,18 +121,6 @@ if NOT %errorlevel%==0 (
     exit
 )
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/sorting.bat
-if NOT %errorlevel%==0 (
-    cls
-)
-if NOT %errorlevel%==0 (
-    echo Your connection was interupted during installation. Please try again later
-)
-if NOT %errorlevel%==0 (
-    pause
-)
-if NOT %errorlevel%==0 (
-    exit
-)
 curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/opensort.bat
 if NOT %errorlevel%==0 (
     cls

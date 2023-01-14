@@ -2,11 +2,38 @@
 title A simple sorting app
 set loc=%appdata%\treyapps\sort\sorting
 set desktop=%userprofile%\Documents\sorting
-set currentver="1.1.0-beta-r3"
+set currentver=1.2.0-beta-r1
+set ver=0010200
+set theValue=
+for /f "delims=" %%a in ('curl https://raw.githubusercontent.com/trey7658/Sorting/main/debug/currentStableVersion') do @set theValue=%%a
+if %ver% GTR %theValue% echo you are running a beta version
+if %ver% LSS %theValue% goto askforautoupdate
+if %ver% == %theValue% echo you are up to date
+timeout 2 > NUL
 :start
+cls
 color 0f 
 echo welcome to a sorting app
+echo [o  ]
+timeout 1 > NUL
+cls
+echo welcome to a sorting app
+echo [oo ]
+timeout 1 > NUL
+cls
+echo welcome to a sorting app
+echo [ooo]
+timeout 1 > NUL
+cls
 goto sort
+:askforautoupdate
+echo You are out of date
+echo Would you like to update
+echo 1) Yes
+echo 2) No
+set/p "cho=>"
+if %cho%==1 goto update
+if %cho%==2 goto start
 :crash
 cls
 color fc
@@ -189,9 +216,7 @@ title finishing up
 del %desktop%\desktop.ini
 ECHO [.ShellClassInfo] >%desktop%\desktop.ini
 ECHO IconResource=C:\treyapps\Sort\Icon.ico,0 >>%desktop%\desktop.ini
-move %desktop%\desktop.in %desktop%\desktop.ini
 attrib +S +H %desktop%\desktop.ini
-attrib +R %desktop%
 del %desktop%\readme.txt
 echo This folder has your sortable files >%desktop%\readme.txt
 color fc

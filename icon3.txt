@@ -1,0 +1,2 @@
+[.ShellClassInfo]
+IconResource=C:\treyapps\Sort\icons\IconPurple.ico,0

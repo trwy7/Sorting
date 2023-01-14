@@ -1,7 +1,14 @@
 @echo off
+:: sets the title
 title A simple sorting app
+:: sets starting variables
 set loc=%appdata%\treyapps\sort\sorting
 set desktop=%userprofile%\Documents\sorting
+set iconoptionblue=%appdata%\treyapps\sort\settings\icon\blue.s
+set iconoptiondefault=%appdata%\treyapps\sort\settings\icon\default.s
+set iconoptionpurple=%appdata%\treyapps\sort\settings\icon\purple.s
+set iconoptiongrey=%appdata%\treyapps\sort\settings\icon\greyscale.s
+:: for updating
 set currentver=1.2.0-beta-r1
 set ver=0010200
 set theValue=
@@ -9,6 +16,7 @@ for /f "delims=" %%a in ('curl -S -s https://raw.githubusercontent.com/trey7658/
 if %ver% GTR %theValue% echo you are running a beta version
 if %ver% LSS %theValue% goto askforautoupdate
 if %ver% == %theValue% echo you are up to date
+:: sets timeout for checking version number (if not connected to internet it will throw an error message)
 timeout 2 > NUL
 :start
 cls
@@ -121,6 +129,16 @@ if %icon%==1 copy "greenblue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Progra
 if %icon%==2 copy "blue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 if %icon%==3 copy "purple.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 if %icon%==4 copy "greyscale.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
+IF EXIST %appdata%\treyapps\sort\settings\icon\default.s DEL /F %appdata%\treyapps\sort\settings\icon\default.s
+IF EXIST %appdata%\treyapps\sort\settings\icon\blue.s DEL /F %appdata%\treyapps\sort\settings\icon\blue.s
+IF EXIST %appdata%\treyapps\sort\settings\icon\purple.s DEL /F %appdata%\treyapps\sort\settings\icon\purple.s
+IF EXIST %appdata%\treyapps\sort\settings\icon\greyscale.s DEL /F %appdata%\treyapps\sort\settings\icon\greyscale.s
+if %icon%==1 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\default.s
+if %icon%==2 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\blue.s
+if %icon%==3 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\purple.s
+if %icon%==4 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\greyscale.s
+attrib -S -H %desktop%\desktop.ini
+del %desktop%\desktop.ini
 goto sort
 :forms
 cls
@@ -211,11 +229,14 @@ echo sorting work
 move *.pptx* %desktop%\work\presentations
 move *.docx* %desktop%\work\Documents
 move *.xlsx* %desktop%\work\spreadsheets
-cls
 title finishing up
 del %desktop%\desktop.ini
-ECHO [.ShellClassInfo] >%desktop%\desktop.ini
-ECHO IconResource=C:\treyapps\Sort\Icon.ico,0 >>%desktop%\desktop.ini
+cls
+IF EXIST %appdata%\treyapps\sort\settings\icon\default.s copy %appdata%\treyapps\sort\icon1.txt %desktop%\desktop.ini
+IF EXIST %appdata%\treyapps\sort\settings\icon\blue.s copy %appdata%\treyapps\sort\icon2.txt %desktop%\desktop.ini
+IF EXIST %appdata%\treyapps\sort\settings\icon\purple.s copy %appdata%\treyapps\sort\icon3.txt %desktop%\desktop.ini
+IF EXIST %appdata%\treyapps\sort\settings\icon\greyscale.s copy %appdata%\treyapps\sort\icon4.txt %desktop%\desktop.ini
+pause
 attrib +S +H %desktop%\desktop.ini
 del %desktop%\readme.txt
 echo This folder has your sortable files >%desktop%\readme.txt

@@ -37,6 +37,7 @@ exit
 :startdownload
 echo downloading required files
 timeout 1 > NUL
+:: downloads files used for installation
 curl -O -S -s https://raw.githubusercontent.com/trey7658/Sorting/main/IconPurple.ico
 if %errorlevel%==9009 echo curl is required but not installed for some reason
 if %errorlevel%==9009 echo.
@@ -88,7 +89,7 @@ echo                                          ;;;;;;;;;;;;;;;;;;;
 echo                                          ;;;;;;;;;;;;;;;;;;;                                       
 echo                                          +;;;;;;;;;;;;;;;;;:                                       
 echo                                          ;;;;;;;;;;;;;;;;;;      file 1 of 13                                  
-echo                                          ;;;;;;;;;;;;;;;;;;    [#             ]                                  
+echo                                          ;;;;;;;;;;;;;;;;;;    [#            ]                                  
 echo                                           ;;;;;;;;;;;;;;;;;                                        
 echo                                            ;;;;;;;;;;;;;;;                                         
 echo                                             ;;;;;;;;;;;;;                                           
@@ -138,7 +139,7 @@ echo                                          ;;;;;;;;;;;;;;;;;;;
 echo                                          ;;;;;;;;;;;;;;;;;;;                                       
 echo                                          +;;;;;;;;;;;;;;;;;:                                       
 echo                                          ;;;;;;;;;;;;;;;;;;      file 2 of 13                                  
-echo                                          ;;;;;;;;;;;;;;;;;;    [##            ]                                  
+echo                                          ;;;;;;;;;;;;;;;;;;    [##           ]                                  
 echo                                           ;;;;;;;;;;;;;;;;;                                        
 echo                                            ;;;;;;;;;;;;;;;                                         
 echo                                             ;;;;;;;;;;;;;                                           
@@ -188,7 +189,7 @@ echo                                          ;;;;;;;;;;;;;;;;;;;
 echo                                          ;;;;;;;;;;;;;;;;;;;                                       
 echo                                          +;;;;;;;;;;;;;;;;;:                                       
 echo                                          ;;;;;;;;;;;;;;;;;;      file 3 of 13                                  
-echo                                          ;;;;;;;;;;;;;;;;;;    [###           ]                                  
+echo                                          ;;;;;;;;;;;;;;;;;;    [###          ]                                  
 echo                                           ;;;;;;;;;;;;;;;;;                                        
 echo                                            ;;;;;;;;;;;;;;;                                         
 echo                                             ;;;;;;;;;;;;;                                    
@@ -238,7 +239,7 @@ echo                                          ;;;;;;;;;;;;;;;;;;;
 echo                                          ;;;;;;;;;;;;;;;;;;;                                       
 echo                                          +;;;;;;;;;;;;;;;;;:                                       
 echo                                          ;;;;;;;;;;;;;;;;;;      file 4 of 13                                  
-echo                                          ;;;;;;;;;;;;;;;;;;    [####          ]                                  
+echo                                          ;;;;;;;;;;;;;;;;;;    [####         ]                                  
 echo                                           ;;;;;;;;;;;;;;;;;                                        
 echo                                            ;;;;;;;;;;;;;;;                                         
 echo                                             ;;;;;;;;;;;;;                                  
@@ -288,7 +289,7 @@ echo                                          ;;;;;;;;;;;;;;;;;;;
 echo                                          ;;;;;;;;;;;;;;;;;;;                                       
 echo                                          +;;;;;;;;;;;;;;;;;:                                       
 echo                                          ;;;;;;;;;;;;;;;;;;      file 5 of 13                                  
-echo                                          ;;;;;;;;;;;;;;;;;;    [#####         ]                                  
+echo                                          ;;;;;;;;;;;;;;;;;;    [#####        ]                                  
 echo                                           ;;;;;;;;;;;;;;;;;                                        
 echo                                            ;;;;;;;;;;;;;;;                                         
 echo                                             ;;;;;;;;;;;;;                                  
@@ -338,7 +339,7 @@ echo                                          ;;;;;;;;;;;;;;;;;;;
 echo                                          ;;;;;;;;;;;;;;;;;;;                                       
 echo                                          +;;;;;;;;;;;;;;;;;:                                       
 echo                                          ;;;;;;;;;;;;;;;;;;      file 6 of 13                                  
-echo                                          ;;;;;;;;;;;;;;;;;;    [######        ]                                  
+echo                                          ;;;;;;;;;;;;;;;;;;    [######       ]                                  
 echo                                           ;;;;;;;;;;;;;;;;;                                        
 echo                                            ;;;;;;;;;;;;;;;                                         
 echo                                             ;;;;;;;;;;;;;                              
@@ -388,7 +389,7 @@ echo                                          ;;;;;;;;;;;;;;;;;;;
 echo                                          ;;;;;;;;;;;;;;;;;;;                                       
 echo                                          +;;;;;;;;;;;;;;;;;:                                       
 echo                                          ;;;;;;;;;;;;;;;;;;      file 7 of 13                                  
-echo                                          ;;;;;;;;;;;;;;;;;;    [#######       ]                                  
+echo                                          ;;;;;;;;;;;;;;;;;;    [#######      ]                                  
 echo                                           ;;;;;;;;;;;;;;;;;                                        
 echo                                            ;;;;;;;;;;;;;;;                                         
 echo                                             ;;;;;;;;;;;;;                                   
@@ -438,7 +439,7 @@ echo                                          ;;;;;;;;;;;;;;;;;;;
 echo                                          ;;;;;;;;;;;;;;;;;;;                                       
 echo                                          +;;;;;;;;;;;;;;;;;:                                       
 echo                                          ;;;;;;;;;;;;;;;;;;      file 8 of 13                                  
-echo                                          ;;;;;;;;;;;;;;;;;;    [########      ]                                  
+echo                                          ;;;;;;;;;;;;;;;;;;    [########     ]                                  
 echo                                           ;;;;;;;;;;;;;;;;;                                        
 echo                                            ;;;;;;;;;;;;;;;                                         
 echo                                             ;;;;;;;;;;;;;                              
@@ -455,44 +456,7 @@ if NOT %errorlevel%==0 (
 if NOT %errorlevel%==0 (
     exit
 )
-cls
-echo                       ;;;;;;;;:::                                   +++                           
-echo                      ;;;;;;;;;::::                                 ;;;++                          
-echo                      ;;;;;;;;;::::                               ;;;;+++++                        
-echo                      ;;;;;;;;;::::                             ;;:;;;;;;;;++                      
-echo                       ;;;;;;;;:::                               ;;;;;;;;;;+                       
-echo.                                                                                                     
-echo                                               ;;;;;::                                              
-echo                                             ;;;;;;;::::                                            
-echo                                            +;;;;;;;;::::                                           
-echo                                             ;;;;;;;;:::                                            
-echo                                               ;;;;;:;                                              
-echo.                                                                                                     
-echo                  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,                 
-echo                 ,::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,                
-echo                 :::::::::::::::::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,                
-echo                   ::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::::::::::::::::::,,,,                  
-echo                       ++++++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;                      
-echo                       ?+++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;                      
-echo                        +++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;                       
-echo                            +++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;                           
-echo                              +;+++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                            
-echo                                 +;+++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                               
-echo                                  ;+;+;;;;;;;;;;;;;;;;;;;;;;;;;;;:;+                                
-echo                                    +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                  
-echo                                     ++;;;;;;;;;;;;;;;;;;;;;;;;;;                                   
-echo                                      +;;;;;;;;;;;;;;;;;;;;;;;;;                                    
-echo                                        ;;;;;;;;;;;;;;;;;;;;;;;                                     
-echo                                         ;;;;;;;;;;;;;;;;;;;;                                       
-echo                                          ;;;;;;;;;;;;;;;;;;;                                       
-echo                                          ;;;;;;;;;;;;;;;;;;;                                       
-echo                                          +;;;;;;;;;;;;;;;;;:                                       
-echo                                          ;;;;;;;;;;;;;;;;;;      file 9 of 13                                  
-echo                                          ;;;;;;;;;;;;;;;;;;    [#########     ]                                  
-echo                                           ;;;;;;;;;;;;;;;;;                                        
-echo                                            ;;;;;;;;;;;;;;;                                         
-echo                                             ;;;;;;;;;;;;;                          
-curl -O -S -s https://raw.githubusercontent.com/trey7658/Sorting/main/icon.txt
+curl -O https://raw.githubusercontent.com/trey7658/Sorting/main/icon.txt
 if NOT %errorlevel%==0 (
     cls
 )
@@ -753,10 +717,19 @@ del %appdata%\treyapps\sort\IconBlackAndWhite.ico
 del %appdata%\treyapps\sort\IconBlue.ico
 del %appdata%\treyapps\sort\IconPurple.ico
 md %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\"
+md %appdata%\treyapps\sort\settings\icon\
 if %icon%==1 copy "greenblue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 if %icon%==2 copy "blue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 if %icon%==3 copy "purple.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 if %icon%==4 copy "greyscale.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
+IF EXIST %appdata%\treyapps\sort\settings\icon\default.s DEL /F %appdata%\treyapps\sort\settings\icon\default.s
+IF EXIST %appdata%\treyapps\sort\settings\icon\blue.s DEL /F %appdata%\treyapps\sort\settings\icon\blue.s
+IF EXIST %appdata%\treyapps\sort\settings\icon\purple.s DEL /F %appdata%\treyapps\sort\settings\icon\purple.s
+IF EXIST %appdata%\treyapps\sort\settings\icon\greyscale.s DEL /F %appdata%\treyapps\sort\settings\icon\greyscale.s
+if %icon%==1 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\default.s
+if %icon%==2 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\blue.s
+if %icon%==3 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\purple.s
+if %icon%==4 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\greyscale.s
 copy "greenblue.lnk" C:\treyapps\sort\shortcuts
 copy "blue.lnk" C:\treyapps\sort\shortcuts
 copy "purple.lnk" C:\treyapps\sort\shortcuts

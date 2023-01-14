@@ -1,2 +1,3 @@
 @echo off
-%appdata%\treyapps\sort\sorting.bat
+cd /d %appdata%\treyapps\sort
+sorting.bat

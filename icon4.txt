@@ -1,0 +1,2 @@
+[.ShellClassInfo]
+IconResource=C:\treyapps\Sort\icons\IconBlackAndWhite.ico,0

@@ -42,6 +42,7 @@ del %appdata%\treyapps\sort\IconBlackAndWhite.ico
 del %appdata%\treyapps\sort\IconBlue.ico
 del %appdata%\treyapps\sort\IconPurple.ico
 md %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\"
+echo %icon% > %appdata%\treyapps\sort\iconcolor.txt
 if %icon%==1 copy "greenblue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 if %icon%==2 copy "blue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 if %icon%==3 copy "purple.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"

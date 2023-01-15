@@ -9,8 +9,8 @@ set iconoptiondefault=%appdata%\treyapps\sort\settings\icon\default.s
 set iconoptionpurple=%appdata%\treyapps\sort\settings\icon\purple.s
 set iconoptiongrey=%appdata%\treyapps\sort\settings\icon\greyscale.s
 :: for updating
-set currentver=1.1.1
-set ver=00101010
+set currentver=1.2.0-beta-r2
+set ver=00101011
 set theValue=
 for /f "delims=" %%a in ('curl -S -s https://raw.githubusercontent.com/trey7658/Sorting/main/debug/currentStableVersion') do @set theValue=%%a
 if %ver% GTR %theValue% echo you are running a beta version

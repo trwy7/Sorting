@@ -15,6 +15,43 @@ cls
 goto start
 :iconselector
 cls
+echo                       ;;;;;;;;:::                                   +++                           
+echo                      ;;;;;;;;;::::                                 ;;;++                          
+echo                      ;;;;;;;;;::::                               ;;;;+++++                        
+echo                      ;;;;;;;;;::::                             ;;:;;;;;;;;++                      
+echo                       ;;;;;;;;:::                               ;;;;;;;;;;+                       
+echo.                                                                                                     
+echo                                               ;;;;;::                                              
+echo                                             ;;;;;;;::::                                            
+echo                                            +;;;;;;;;::::                                           
+echo                                             ;;;;;;;;:::                                            
+echo                                               ;;;;;:;                                              
+echo.                                                                                                     
+echo                  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,                 
+echo                 ,::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,                
+echo                 :::::::::::::::::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,                
+echo                   ::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::::::::::::::::::,,,,                  
+echo                       ++++++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;                      
+echo                       ?+++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;                      
+echo                        +++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;                       
+echo                            +++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;                           
+echo                              +;+++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;           Choose an icon                 
+echo                                 +;+++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                               
+echo                                  ;+;+;;;;;;;;;;;;;;;;;;;;;;;;;;;:;+                                
+echo                                    +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;               1) blue and green                   
+echo                                     ++;;;;;;;;;;;;;;;;;;;;;;;;;;                2) just blue                   
+echo                                      +;;;;;;;;;;;;;;;;;;;;;;;;;                 3) Purple and pink                   
+echo                                        ;;;;;;;;;;;;;;;;;;;;;;;                  4) black and white (greyscale)                   
+echo                                         ;;;;;;;;;;;;;;;;;;;;                                       
+echo                                          ;;;;;;;;;;;;;;;;;;;                                       
+echo                                          ;;;;;;;;;;;;;;;;;;;                                       
+echo                                          +;;;;;;;;;;;;;;;;;:                                       
+echo                                          ;;;;;;;;;;;;;;;;;;                                       
+echo                                          ;;;;;;;;;;;;;;;;;;                                      
+echo                                           ;;;;;;;;;;;;;;;;;                                        
+echo                                            ;;;;;;;;;;;;;;;                                         
+echo                                             ;;;;;;;;;;;;;        
+echo.                                   
 echo please choose an icon
 echo 1) Default (blue and green)
 echo 2) Blue (just shades of blue)
@@ -47,6 +84,14 @@ if %icon%==1 copy "greenblue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Progra
 if %icon%==2 copy "blue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 if %icon%==3 copy "purple.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
 if %icon%==4 copy "greyscale.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
+IF EXIST %appdata%\treyapps\sort\settings\icon\default.s DEL /F %appdata%\treyapps\sort\settings\icon\default.s
+IF EXIST %appdata%\treyapps\sort\settings\icon\blue.s DEL /F %appdata%\treyapps\sort\settings\icon\blue.s
+IF EXIST %appdata%\treyapps\sort\settings\icon\purple.s DEL /F %appdata%\treyapps\sort\settings\icon\purple.s
+IF EXIST %appdata%\treyapps\sort\settings\icon\greyscale.s DEL /F %appdata%\treyapps\sort\settings\icon\greyscale.s
+if %icon%==1 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\default.s
+if %icon%==2 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\blue.s
+if %icon%==3 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\purple.s
+if %icon%==4 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\greyscale.s
 copy "greenblue.lnk" C:\treyapps\sort\shortcuts
 copy "blue.lnk" C:\treyapps\sort\shortcuts
 copy "purple.lnk" C:\treyapps\sort\shortcuts

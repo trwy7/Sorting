@@ -51,13 +51,8 @@ echo                                          ;;;;;;;;;;;;;;;;;;
 echo                                           ;;;;;;;;;;;;;;;;;                                        
 echo                                            ;;;;;;;;;;;;;;;                                         
 echo                                             ;;;;;;;;;;;;;        
-echo.                                   
-echo please choose an icon
-echo 1) Default (blue and green)
-echo 2) Blue (just shades of blue)
-echo 3) Purple (purple and pink)
-echo 4) greyscale (black and white)
-set/p "icon=>"
+echo.
+set/p "icon=Choose a numbered option and then press ENTER: "
 if %icon%==1 goto install
 if %icon%==2 goto install
 if %icon%==3 goto install

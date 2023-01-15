@@ -658,48 +658,49 @@ echo                                            ;;;;;;;;;;;;;;;
 echo                                             ;;;;;;;;;;;;;                                           
 :iconselector
 cls
-echo                       ;;;;;;;;:::                                   +++                           
-echo                      ;;;;;;;;;::::                                 ;;;++                          
-echo                      ;;;;;;;;;::::                               ;;;;+++++                        
-echo                      ;;;;;;;;;::::                             ;;:;;;;;;;;++                      
-echo                       ;;;;;;;;:::                               ;;;;;;;;;;+                       
-echo.                                                                                                     
-echo                                               ;;;;;::                                              
-echo                                             ;;;;;;;::::                                            
-echo                                            +;;;;;;;;::::                                           
-echo                                             ;;;;;;;;:::                                            
-echo                                               ;;;;;:;                                              
-echo.                                                                                                     
-echo                  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,                 
-echo                 ,::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,                
-echo                 :::::::::::::::::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,                
-echo                   ::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::::::::::::::::::,,,,                  
-echo                       ++++++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;                      
-echo                       ?+++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;                      
-echo                        +++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;                       
-echo                            +++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;                           
-echo                              +;+++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;           Choose an icon                 
-echo                                 +;+++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                               
-echo                                  ;+;+;;;;;;;;;;;;;;;;;;;;;;;;;;;:;+                                
-echo                                    +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;               1) blue and green                   
-echo                                     ++;;;;;;;;;;;;;;;;;;;;;;;;;;                2) just blue                   
-echo                                      +;;;;;;;;;;;;;;;;;;;;;;;;;                 3) Purple and pink                   
-echo                                        ;;;;;;;;;;;;;;;;;;;;;;;                  4) black and white (greyscale)                   
-echo                                         ;;;;;;;;;;;;;;;;;;;;                                       
-echo                                          ;;;;;;;;;;;;;;;;;;;                                       
-echo                                          ;;;;;;;;;;;;;;;;;;;                                       
-echo                                          +;;;;;;;;;;;;;;;;;:                                       
-echo                                          ;;;;;;;;;;;;;;;;;;                                       
-echo                                          ;;;;;;;;;;;;;;;;;;                                      
-echo                                           ;;;;;;;;;;;;;;;;;                                        
-echo                                            ;;;;;;;;;;;;;;;                                         
-echo                                             ;;;;;;;;;;;;;        
-echo.                                   
+echo                       ;;;;;;;;:::                                   +++
+echo                      ;;;;;;;;;::::                                 ;;;++
+echo                      ;;;;;;;;;::::                               ;;;;+++++
+echo                      ;;;;;;;;;::::                             ;;:;;;;;;;;++
+echo                       ;;;;;;;;:::                               ;;;;;;;;;;+
+echo.
+echo                                               ;;;;;::
+echo                                             ;;;;;;;::::
+echo                                            +;;;;;;;;::::
+echo                                             ;;;;;;;;:::
+echo                                               ;;;;;:;
+echo.
+echo                  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                 ,::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                 :::::::::::::::::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                   ::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::::::::::::::::::,,,,
+echo                       ++++++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;
+echo                       ?+++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;
+echo                        +++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;
+echo                            +++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;
+echo                              +;+++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       Choose an icon
+echo                                 +;+++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                  ;+;+;;;;;;;;;;;;;;;;;;;;;;;;;;;:;+
+echo                                    +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;           1) blue and green
+echo                                     ++;;;;;;;;;;;;;;;;;;;;;;;;;;            2) just blue
+echo                                      +;;;;;;;;;;;;;;;;;;;;;;;;;             3) Purple and pink
+echo                                        ;;;;;;;;;;;;;;;;;;;;;;;              4) black and white (greyscale)
+echo                                         ;;;;;;;;;;;;;;;;;;;;
+echo                                          ;;;;;;;;;;;;;;;;;;;
+echo                                          ;;;;;;;;;;;;;;;;;;;
+echo                                          +;;;;;;;;;;;;;;;;;:
+echo                                          ;;;;;;;;;;;;;;;;;;
+echo                                          ;;;;;;;;;;;;;;;;;;
+echo                                           ;;;;;;;;;;;;;;;;;
+echo                                            ;;;;;;;;;;;;;;;
+echo                                             ;;;;;;;;;;;;;
+echo.
 set/p "icon=Choose a numbered option and then press ENTER: "
 if %icon%==1 goto install
 if %icon%==2 goto install
 if %icon%==3 goto install
 if %icon%==4 goto install 
+if %icon%==no goto secretinstall
 goto iconselector
 :install
 md C:\treyapps\sort\icons
@@ -716,6 +717,7 @@ del %appdata%\treyapps\sort\Icon.ico
 del %appdata%\treyapps\sort\IconBlackAndWhite.ico
 del %appdata%\treyapps\sort\IconBlue.ico
 del %appdata%\treyapps\sort\IconPurple.ico
+IF EXIST %appdata%\treyapps\sort\IconSecret.ico DEL /F %appdata%\treyapps\sort\IconSecret.ico
 md %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\"
 md %appdata%\treyapps\sort\settings\icon\
 if %icon%==1 copy "greenblue.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
@@ -735,7 +737,6 @@ copy "blue.lnk" C:\treyapps\sort\shortcuts
 copy "purple.lnk" C:\treyapps\sort\shortcuts
 copy "greyscale.lnk" C:\treyapps\sort\shortcuts
 cls
-del /Q *.*
 echo Done installing
 echo 1) Exit
 echo 2) Sort now
@@ -743,3 +744,165 @@ set/p "cho=>"
 if %cho%==1 exit
 if %cho%==2 %appdata%\treyapps\sort\sorting.bat
 exit
+:secretinstall
+cls
+echo haha very funny.
+timeout 2 > NUL
+cls
+echo Downloading extra files
+curl -O -S -s https://raw.githubusercontent.com/trey7658/Sorting/main/secret/IconSecret.ico
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. You can try again with a normal icon option
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    goto iconselector
+)
+cls
+echo                       ;;;;;;;;:::                                   +++
+echo                      ;;;;;;;;;::::                                 ;;;++
+echo                      ;;;;;;;;;::::                               ;;;;+++++
+echo                      ;;;;;;;;;::::                             ;;:;;;;;;;;++
+echo                       ;;;;;;;;:::                               ;;;;;;;;;;+
+echo.
+echo                                               ;;;;;::
+echo                                             ;;;;;;;::::
+echo                                            +;;;;;;;;::::
+echo                                             ;;;;;;;;:::
+echo                                               ;;;;;:;
+echo.
+echo                  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                 ,::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                 :::::::::::::::::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                   ::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::::::::::::::::::,,,,
+echo                       ++++++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;
+echo                       ?+++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;
+echo                        +++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;
+echo                            +++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;
+echo                              +;+++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                 +;+++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                  ;+;+;;;;;;;;;;;;;;;;;;;;;;;;;;;:;+
+echo                                    +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                     ++;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                      +;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                        ;;;;;;;;;;;;;;;;;;;;;;;
+echo                                         ;;;;;;;;;;;;;;;;;;;;
+echo                                          ;;;;;;;;;;;;;;;;;;;
+echo                                          ;;;;;;;;;;;;;;;;;;;
+echo                                          +;;;;;;;;;;;;;;;;;:
+echo                                          ;;;;;;;;;;;;;;;;;;      file 1 of 3
+echo                                          ;;;;;;;;;;;;;;;;;;         [#  ]
+echo                                           ;;;;;;;;;;;;;;;;;
+echo                                            ;;;;;;;;;;;;;;;
+echo                                             ;;;;;;;;;;;;;
+curl -O -S -s https://raw.githubusercontent.com/trey7658/Sorting/main/secret/secret.lnk
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. You can try again with a normal icon option
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    goto iconselector
+)
+cls
+echo                       ;;;;;;;;:::                                   +++
+echo                      ;;;;;;;;;::::                                 ;;;++
+echo                      ;;;;;;;;;::::                               ;;;;+++++
+echo                      ;;;;;;;;;::::                             ;;:;;;;;;;;++
+echo                       ;;;;;;;;:::                               ;;;;;;;;;;+
+echo.
+echo                                               ;;;;;::
+echo                                             ;;;;;;;::::
+echo                                            +;;;;;;;;::::
+echo                                             ;;;;;;;;:::
+echo                                               ;;;;;:;
+echo.
+echo                  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                 ,::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                 :::::::::::::::::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                   ::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::::::::::::::::::,,,,
+echo                       ++++++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;
+echo                       ?+++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;
+echo                        +++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;
+echo                            +++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;
+echo                              +;+++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                 +;+++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                  ;+;+;;;;;;;;;;;;;;;;;;;;;;;;;;;:;+
+echo                                    +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                     ++;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                      +;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                        ;;;;;;;;;;;;;;;;;;;;;;;
+echo                                         ;;;;;;;;;;;;;;;;;;;;
+echo                                          ;;;;;;;;;;;;;;;;;;;
+echo                                          ;;;;;;;;;;;;;;;;;;;
+echo                                          +;;;;;;;;;;;;;;;;;:
+echo                                          ;;;;;;;;;;;;;;;;;;      file 2 of 3
+echo                                          ;;;;;;;;;;;;;;;;;;         [## ]
+echo                                           ;;;;;;;;;;;;;;;;;
+echo                                            ;;;;;;;;;;;;;;;
+echo                                             ;;;;;;;;;;;;;
+curl -O -S -s https://raw.githubusercontent.com/trey7658/Sorting/main/secret/iconSecret.txt
+if NOT %errorlevel%==0 (
+    cls
+)
+if NOT %errorlevel%==0 (
+    echo Your connection was interupted during installation. You can try again with a normal icon option
+)
+if NOT %errorlevel%==0 (
+    pause
+)
+if NOT %errorlevel%==0 (
+    goto iconselector
+)
+cls
+echo                       ;;;;;;;;:::                                   +++
+echo                      ;;;;;;;;;::::                                 ;;;++
+echo                      ;;;;;;;;;::::                               ;;;;+++++
+echo                      ;;;;;;;;;::::                             ;;:;;;;;;;;++
+echo                       ;;;;;;;;:::                               ;;;;;;;;;;+
+echo.
+echo                                               ;;;;;::
+echo                                             ;;;;;;;::::
+echo                                            +;;;;;;;;::::
+echo                                             ;;;;;;;;:::
+echo                                               ;;;;;:;
+echo.
+echo                  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                 ,::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                 :::::::::::::::::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+echo                   ::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::::::::::::::::::,,,,
+echo                       ++++++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;
+echo                       ?+++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;
+echo                        +++++++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;;
+echo                            +++++++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:;
+echo                              +;+++++++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                 +;+++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                  ;+;+;;;;;;;;;;;;;;;;;;;;;;;;;;;:;+
+echo                                    +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                     ++;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                      +;;;;;;;;;;;;;;;;;;;;;;;;;
+echo                                        ;;;;;;;;;;;;;;;;;;;;;;;
+echo                                         ;;;;;;;;;;;;;;;;;;;;
+echo                                          ;;;;;;;;;;;;;;;;;;;
+echo                                          ;;;;;;;;;;;;;;;;;;;
+echo                                          +;;;;;;;;;;;;;;;;;:
+echo                                          ;;;;;;;;;;;;;;;;;;      file 3 of 3
+echo                                          ;;;;;;;;;;;;;;;;;;         [###]
+echo                                           ;;;;;;;;;;;;;;;;;
+echo                                            ;;;;;;;;;;;;;;;
+echo                                             ;;;;;;;;;;;;;
+cls
+timeout 1 > NUL
+echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\secret.s
+copy "IconSecret.ico" C:\treyapps\sort\icons
+copy "secret.lnk" %appdata%"\Microsoft\Windows\Start Menu\Programs\treyapps\Sort\Sort your files.lnk"
+goto install

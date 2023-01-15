@@ -696,6 +696,7 @@ echo                                            ;;;;;;;;;;;;;;;
 echo                                             ;;;;;;;;;;;;;
 echo.
 set/p "icon=Choose a numbered option and then press ENTER: "
+IF EXIST %appdata%\treyapps\sort\settings\icon\secret.s DEL /F %appdata%\treyapps\sort\settings\icon\secret.s
 if %icon%==1 goto install
 if %icon%==2 goto install
 if %icon%==3 goto install

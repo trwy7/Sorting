@@ -9,8 +9,8 @@ set iconoptiondefault=%appdata%\treyapps\sort\settings\icon\default.s
 set iconoptionpurple=%appdata%\treyapps\sort\settings\icon\purple.s
 set iconoptiongrey=%appdata%\treyapps\sort\settings\icon\greyscale.s
 :: for updating
-set currentver=1.2.0-beta-r1
-set ver=0010200
+set currentver=1.1.1
+set ver=00101010
 set theValue=
 for /f "delims=" %%a in ('curl -S -s https://raw.githubusercontent.com/trey7658/Sorting/main/debug/currentStableVersion') do @set theValue=%%a
 if %ver% GTR %theValue% echo you are running a beta version
@@ -233,6 +233,7 @@ IF EXIST %appdata%\treyapps\sort\settings\icon\default.s DEL /F %appdata%\treyap
 IF EXIST %appdata%\treyapps\sort\settings\icon\blue.s DEL /F %appdata%\treyapps\sort\settings\icon\blue.s
 IF EXIST %appdata%\treyapps\sort\settings\icon\purple.s DEL /F %appdata%\treyapps\sort\settings\icon\purple.s
 IF EXIST %appdata%\treyapps\sort\settings\icon\greyscale.s DEL /F %appdata%\treyapps\sort\settings\icon\greyscale.s
+IF EXIST %appdata%\treyapps\sort\settings\icon\secret.s DEL /F %appdata%\treyapps\sort\settings\icon\secret.s
 if %icon%==1 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\default.s
 if %icon%==2 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\blue.s
 if %icon%==3 echo this is a file used for settings > %appdata%\treyapps\sort\settings\icon\purple.s

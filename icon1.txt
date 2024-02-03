@@ -1,2 +1,0 @@
-[.ShellClassInfo]
-IconResource=C:\treyapps\Sort\icons\Icon.ico,0

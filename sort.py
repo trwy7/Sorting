@@ -16,8 +16,8 @@ def folder():
     if sortdir == '':
         print('No input')
         raise KeyError("Nothing was chosen")
-    return glob.glob(sortdir + '/*.*')
-        
+    return glob.glob(sortdir + '/*')
+
 def files():
     return list(askopenfilenames())
 
@@ -64,13 +64,12 @@ def sort(files):
             print(f'{folder}: {str(amnt)}')
         print(f'\n{srtamnt}/{totalamnt} were matched, others will be left in the folder. {diramnt} subdirectories were excluded and wont be copied.')
         choice = input('Continue (last time) (Y/N)> ')
-        print('You now have to pick an ending directory (where to move the files). It must be on the same drive as the source')
-        movedir = askdirectory(title='Ending directory')
-        if movedir == '':
-            print('No input')
-            raise KeyError("Nothing was chosen")
-        print(movedir)
         if choice == 'Y' or choice == 'y':
+            print('You now have to pick an ending directory (where to move the files). It must be on the same drive as the source')
+            movedir = askdirectory(title='Ending directory')
+            if movedir == '':
+                print('No input')
+                raise KeyError("Nothing was chosen")
             for file in files:
                 if os.path.isfile(file):
                     for key, value in filetypes.items():

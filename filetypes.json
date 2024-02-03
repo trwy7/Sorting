@@ -31,7 +31,7 @@
     ".tar.gz": "compressed/",
     ".7z": "compressed/",
     ".rar": "compressed/",
-    ".iso": "compressed/disk",
+    ".iso": "compressed/disk/",
     ".cpp": "executable/developer/",
     ".c": "executable/developer/",
     ".unity": "executable/developer/",

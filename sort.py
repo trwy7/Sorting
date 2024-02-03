@@ -79,7 +79,9 @@ def sort(files):
                             b = a.split('/')
                             c = b[-1]
                             print(f'Moving: {c}')
-                            os.rename(file, movedir + '/' + c)
+                            if not os.path.isdir(movedir + '/' + value):
+                                os.makedirs(movedir + '/' + value)
+                            os.rename(a, movedir + '/' + value + c)
                             break
     else:
         exit()

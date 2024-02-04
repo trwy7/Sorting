@@ -1,5 +1,6 @@
 from tkinter.filedialog import askdirectory, askopenfilenames
 import os, json, glob, requests, time
+import zipfile
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 try:
@@ -21,12 +22,31 @@ def folder():
 def files():
     return list(askopenfilenames())
 
+def iszipdir(z, name): # not actually being used
+    # stack overflow is great: https://stackoverflow.com/questions/11617450/check-if-a-directory-exists-in-a-zip-file-with-python
+    return any(x.startswith("%s/" % name.rstrip("/")) for x in z.namelist())
+
 def sort(files):
+    global zipcons
+    zipcons = 0
+    clear()
     for file in files:
         print(f'found {file}')
-    print('\n\nAll files above will be moved from its folder, and cannot be moved back. Please make sure it is correct.')
+    print('\n\nMost files above will be moved from its folder, and cannot be moved back. Please make sure it is correct. Total files moved will be calculated next.')
     choice = input('(Y/N)> ')
     if choice == 'Y' or choice == 'y':
+        print('\n\nDo you allow this program to temporarily look through compressed files. No data will be sent to a server, it is all local.')
+        choice = input('(Y/N)> ')
+        global ziptypes
+        if choice == 'Y' or choice == 'y':
+            zipcons = 1
+            try:
+                with open("ziptypes.json", "r") as f:
+                    ziptypes = dict(json.load(f))
+            except:
+                print('Getting most recent ziptypes. Please wait...')
+                response = requests.get('https://raw.githubusercontent.com/trwy7/Sorting/main/ziptypes.json')
+                ziptypes = dict(json.loads(response.text))
         print('Running test run...')
         global testrun
         testrun = dict()
@@ -45,14 +65,26 @@ def sort(files):
                 for key, value in filetypes.items():
                     if file.endswith(key):
                         print(f'Match: {key} - {file}')
+                        actvalue = value
                         try:
                             srtamnt = srtamnt + 1
                         except KeyError:
                             srtamnt = 1
+                        filezip = None
+                        if zipcons == 1:
+                            try:
+                                filezip = zipfile.ZipFile(file)
+                            except zipfile.BadZipFile:
+                                pass
+                            if not filezip == None:
+                                for testfile, endpath in ziptypes.items():
+                                    if testfile in filezip.namelist():
+                                        actvalue = endpath
+                                        break
                         try:
-                            testrun[value] = testrun[value] + 1
+                            testrun[actvalue] = testrun[actvalue] + 1
                         except KeyError:
-                            testrun[value] = 1
+                            testrun[actvalue] = 1
                         break
             else:
                 try:
@@ -72,19 +104,37 @@ def sort(files):
                 raise KeyError("Nothing was chosen")
             for file in files:
                 if os.path.isfile(file):
+                    try:
+                        totalamnt = totalamnt + 1
+                    except KeyError:
+                        totalamnt = 1
                     for key, value in filetypes.items():
                         if file.endswith(key):
                             a = file.replace('\\','/')
                             b = a.split('/')
                             c = b[-1]
                             print(f'Moving: {c}')
-                            if not os.path.isdir(movedir + '/' + value):
-                                os.makedirs(movedir + '/' + value)
-                            os.rename(a, movedir + '/' + value + c)
+                            actvalue = value
+                            filezip = None
+                            try:
+                                filezip = zipfile.ZipFile(file)
+                            except zipfile.BadZipFile:
+                                pass
+                            if not filezip == None:
+                                for testfile, endpath in ziptypes.items():
+                                    if testfile in filezip.namelist():
+                                        actvalue = endpath
+                                        break
+                            if not filezip == None:
+                                filezip.close()
+                            if not os.path.isdir(movedir + '/' + actvalue):
+                                os.makedirs(movedir + '/' + actvalue)
+                            os.rename(a, movedir + '/' + actvalue + c)
                             break
+                            
     else:
         exit()
-
+clear()
 print('Which sorting method would you like to use?')
 print('(1) Pick a folder (takes longer to process but recommended)')
 print('(2) Manually pick files')

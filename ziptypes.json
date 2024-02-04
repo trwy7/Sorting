@@ -1,0 +1,9 @@
+{
+    "fabric.mod.json": "executable/minecraft/fabric mods/",
+    "plugin.yml": "executable/minecraft/server/plugins/",
+    "bungee.yml": "executable/minecraft/server/plugins/",
+    "io/papermc/": "executable/minecraft/server/jars/",
+    "net/minecraft/": "executable/minecraft/server/jars/",
+    "net/md_5/bungee/": "executable/minecraft/server/jars/proxy/",
+    "com/velocitypowered/": "executable/minecraft/server/jars/proxy/"
+}
